@@ -54,10 +54,16 @@ def main():
     plot_vectors([V_1, V_1 * a, V_1 * a**2], [(0, 0), (0, 0), (0, 0)], ['blue', 'blue', 'blue'], "Positive")
 
     # Plot negative sequence vectors
-    plot_vectors([V_2, V_2 * a**2, V_2 * a], [(V_1.real, V_1.imag), (V_1.real + (V_1 * a).real, V_1.imag + (V_1 * a).imag), (V_1.real + (V_1 * a).real + (V_1 * a**2).real, V_1.imag + (V_1 * a).imag + (V_1 * a**2).imag)], ['green', 'green', 'green'], "Negative")
+    start_neg1 = (V_1.real, V_1.imag)
+    start_neg2 = ((V_1 * a).real, (V_1 * a).imag)
+    start_neg3 = ((V_1 * a**2).real, (V_1 * a**2).imag)
+    plot_vectors([V_2, V_2 * a**2, V_2 * a], [start_neg1, start_neg2, start_neg3], ['green', 'green', 'green'], "Negative")
 
     # Plot zero sequence vectors
-    plot_vectors([V_0, V_0, V_0], [(V_1.real + (V_1 * a).real + (V_1 * a**2).real + V_2.real, V_1.imag + (V_1 * a).imag + (V_1 * a**2).imag + V_2.imag), (V_1.real + (V_1 * a).real + (V_1 * a**2).real + V_2.real + (V_2 * a**2).real, V_1.imag + (V_1 * a).imag + (V_1 * a**2).imag + V_2.imag + (V_2 * a**2).imag), (V_1.real + (V_1 * a).real + (V_1 * a**2).real + V_2.real + (V_2 * a**2).real + (V_2 * a).real, V_1.imag + (V_1 * a).imag + (V_1 * a**2).imag + V_2.imag + (V_2 * a**2).imag + (V_2 * a).imag)], ['red', 'red', 'red'], "Zero")
+    start_zero1 = (V_1.real + V_2.real, V_1.imag + V_2.imag)
+    start_zero2 = ((V_1 * a).real + (V_2 * a**2).real, (V_1 * a).imag + (V_2 * a**2).imag)
+    start_zero3 = ((V_1 * a**2).real + (V_2 * a).real, (V_1 * a**2).imag + (V_2 * a).imag)
+    plot_vectors([V_0, V_0, V_0], [start_zero1, start_zero2, start_zero3], ['red', 'red', 'red'], "Zero")
 
     plt.legend()
     plt.grid()
