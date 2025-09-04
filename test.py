@@ -44,11 +44,11 @@ def main():
 
     # Plotting
     plt.figure(figsize=(10, 10))
-    plt.axhline(0, color='black', linewidth=0.5)
-    plt.axvline(0, color='black', linewidth=0.5)
+    plt.axhline(0, color='grey', linewidth=0.5)
+    plt.axvline(0, color='grey', linewidth=0.5)
 
     # Plot input vectors
-    plot_vectors([V_a, V_b, V_c], [(0, 0), (0, 0), (0, 0)], ['grey', 'grey', 'grey'], "Input")
+    plot_vectors([V_a, V_b, V_c], [(0, 0), (0, 0), (0, 0)], ['black', 'black', 'black'], "Input")
 
     # Plot positive sequence vectors
     plot_vectors([V_1, V_1 * a, V_1 * a**2], [(0, 0), (0, 0), (0, 0)], ['blue', 'blue', 'blue'], "Positive")
