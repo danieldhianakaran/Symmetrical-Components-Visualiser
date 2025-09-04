@@ -9,6 +9,7 @@ import tkinter as tk
 from tkinter import messagebox, ttk
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+from matplotlib.backends.backend_tkagg import NavigationToolbar2Tk
 from matplotlib.figure import Figure
 import numpy as np
 
@@ -169,6 +170,8 @@ ax = fig.add_subplot(111)
 ax.set_aspect("equal", adjustable="box")
 canvas = FigureCanvasTkAgg(fig, master=right)
 canvas.get_tk_widget().pack(fill="both", expand=True)
+toolbar = NavigationToolbar2Tk(canvas, right)
+toolbar.update()
 
 # ------------------------------------------------------------------------
 root.mainloop()
