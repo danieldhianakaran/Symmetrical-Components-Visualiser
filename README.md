@@ -1,4 +1,4 @@
-Kimi: # Symmetrical-Components Visualiser  
+## Symmetrical-Components Visualiser  
 **Language / Stack**: Python 3 – Tkinter – Matplotlib – NumPy  
 **License**: MIT (feel free to change)
 
