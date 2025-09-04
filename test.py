@@ -48,16 +48,16 @@ def main():
     plt.axvline(0, color='black', linewidth=0.5)
 
     # Plot input vectors
-    plot_vectors([V_a, V_b, V_c], [(0, 0), (0, 0), (0, 0)], ['blue', 'green', 'red'], "Input")
+    plot_vectors([V_a, V_b, V_c], [(0, 0), (0, 0), (0, 0)], ['grey', 'grey', 'grey'], "Input")
 
     # Plot positive sequence vectors
-    plot_vectors([V_1, V_1 * a, V_1 * a**2], [(0, 0), (V_1.real, V_1.imag), (V_1.real + (V_1 * a).real, V_1.imag + (V_1 * a).imag)], ['blue', 'green', 'red'], "Positive")
+    plot_vectors([V_1, V_1 * a, V_1 * a**2], [(0, 0), (0, 0), (0, 0)], ['blue', 'blue', 'blue'], "Positive")
 
     # Plot negative sequence vectors
-    plot_vectors([V_2, V_2 * a**2, V_2 * a], [(V_1.real, V_1.imag), (V_1.real + (V_1 * a).real, V_1.imag + (V_1 * a).imag), (V_1.real + (V_1 * a).real + (V_1 * a**2).real, V_1.imag + (V_1 * a).imag + (V_1 * a**2).imag)], ['blue', 'green', 'red'], "Negative")
+    plot_vectors([V_2, V_2 * a**2, V_2 * a], [(V_1.real, V_1.imag), (V_1.real + (V_1 * a).real, V_1.imag + (V_1 * a).imag), (V_1.real + (V_1 * a).real + (V_1 * a**2).real, V_1.imag + (V_1 * a).imag + (V_1 * a**2).imag)], ['green', 'green', 'green'], "Negative")
 
     # Plot zero sequence vectors
-    plot_vectors([V_0, V_0, V_0], [(V_1.real + (V_1 * a).real + (V_1 * a**2).real + V_2.real, V_1.imag + (V_1 * a).imag + (V_1 * a**2).imag + V_2.imag), (V_1.real + (V_1 * a).real + (V_1 * a**2).real + V_2.real + (V_2 * a**2).real, V_1.imag + (V_1 * a).imag + (V_1 * a**2).imag + V_2.imag + (V_2 * a**2).imag), (V_1.real + (V_1 * a).real + (V_1 * a**2).real + V_2.real + (V_2 * a**2).real + (V_2 * a).real, V_1.imag + (V_1 * a).imag + (V_1 * a**2).imag + V_2.imag + (V_2 * a**2).imag + (V_2 * a).imag)], ['blue', 'green', 'red'], "Zero")
+    plot_vectors([V_0, V_0, V_0], [(V_1.real + (V_1 * a).real + (V_1 * a**2).real + V_2.real, V_1.imag + (V_1 * a).imag + (V_1 * a**2).imag + V_2.imag), (V_1.real + (V_1 * a).real + (V_1 * a**2).real + V_2.real + (V_2 * a**2).real, V_1.imag + (V_1 * a).imag + (V_1 * a**2).imag + V_2.imag + (V_2 * a**2).imag), (V_1.real + (V_1 * a).real + (V_1 * a**2).real + V_2.real + (V_2 * a**2).real + (V_2 * a).real, V_1.imag + (V_1 * a).imag + (V_1 * a**2).imag + V_2.imag + (V_2 * a**2).imag + (V_2 * a).imag)], ['red', 'red', 'red'], "Zero")
 
     plt.legend()
     plt.grid()
