@@ -30,6 +30,9 @@ def compute_symmetrical(Va, Vb, Vc):
     V2 = (Va + a ** 2 * Vb + a * Vc) / 3
     return V0, V1, V2
 
+def cpolar(z):
+    return abs(z), math.degrees(math.atan2(z.imag, z.real))
+
 # ------------------------------------------------------------------------
 # Input validation
 # ------------------------------------------------------------------------
@@ -64,6 +67,14 @@ def draw_plot():
         return
 
     V0, V1, V2 = compute_symmetrical(Va, Vb, Vc)
+    
+    mag0, ang0 = cpolar(V0)
+    mag1, ang1 = cpolar(V1)
+    mag2, ang2 = cpolar(V2)
+
+    lbl_zero.config(text=f"Zero  : {mag0:.3f} ∠ {ang0:.2f}°")
+    lbl_pos .config(text=f"Pos   : {mag1:.3f} ∠ {ang1:.2f}°")
+    lbl_neg .config(text=f"Neg   : {mag2:.3f} ∠ {ang2:.2f}°")
 
     # --- clear previous drawing -----------------------------------------
     ax.clear()
@@ -107,7 +118,7 @@ def draw_plot():
     handles, labels = ax.get_legend_handles_labels()
     by_label = dict(zip(labels, handles))
     ax.legend(by_label.values(), by_label.keys(), loc="best")
-
+    
     canvas.draw()
 
 # ------------------------------------------------------------------------
@@ -137,6 +148,17 @@ mag_a, ang_a, mag_b, ang_b, mag_c, ang_c = entries
 
 ttk.Button(left, text="Plot", command=draw_plot).grid(
     row=len(labels), column=0, columnspan=2, pady=10)
+    
+# --------- result area ---------
+res_frame = ttk.LabelFrame(left, text="Sequence results (polar)", padding=5)
+res_frame.grid(row=len(labels)+1, column=0, columnspan=2, pady=10, sticky="ew")
+    
+lbl_zero  = ttk.Label(res_frame, text="Zero  :  – ∠ – °")
+lbl_pos   = ttk.Label(res_frame, text="Pos   :  – ∠ – °")
+lbl_neg   = ttk.Label(res_frame, text="Neg   :  – ∠ – °")
+lbl_zero.grid(row=0, column=0, sticky="w")
+lbl_pos .grid(row=1, column=0, sticky="w")
+lbl_neg .grid(row=2, column=0, sticky="w")
 
 # --- right frame for matplotlib ------------------------------------------
 right = ttk.Frame(root)
